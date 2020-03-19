@@ -1,68 +1,42 @@
 #include <iostream>
-#include <cmath>
-
+#include <string>
 using namespace std;
 
-void PrintGreetings(){
-cout << "+=========================+" << endl;
-cout << "|/\\/\\Falcon Calculator/\\/\\|" << endl;
-cout << "+=========================+" << endl;
-}
-void PrintByeBye(){
-cout << "Thank you for using Falcon Calculator!" << endl;
-}
-void PrintMenuError(){
-    cout << "The choice is not valid." << endl;
-}
-void PrintCurrentValue(int value){
-
-    cout <<"Current value: ";
-    cout << value << endl;
-}
-int InputAnotherValue(int other){
-    cout << "Input another value: ";
-    cin >> other;
+bool IsValid (int AB, int H, int b, int c, int HR, int BB) {
+   if (AB < 200)
+       return false;
+   else
+       return true;
 }
 
-int MenuChoice(){
-    cout << "1) Add    2) Subtract 3) Multiply\n"
-            "4) Divide 5) Modulo   6) Square root\n"
-            "7) Exit\n"
-            "Choose Functionality:" << endl;
-    int choice;
-    cin >> choice;
-    return choice;
 
-    }
+string GetInitials(string name){
 
-int Add(int a, int b) {
-    return a + b;
+    string fName = name.substr(0,1);
+    string  lName = name.substr(name.size() -1,1);
+    string  result = ""+ fName + lName ;
+    return result;
+
 }
 
-int Subtract(int a, int b){
-    return a - b;
+string GetLastName(string name){
+
+    int nameC = name.find(',');
+    string nameL = name.substr(0 , nameC );
+    return nameL;
 }
-int Multiply(int a, int b){
-    return a * b;
+
+double CalcAVG(int H, int AB) {
+
+    return static_cast<double>(H) / AB;
 }
-int Divide(int a, int b) {
-    if (b == 0)
-        return -1;
-    else
-        return a / b;
+
+double CalcOBP(int H, int BB, int AB){
+
+    return static_cast <double> (H + BB) / (AB +BB) ;
 }
-int Modulo(int a, int b){
-    if (b == 0)
-        return -1;
-    else
-        return a % b;
-}
-int Sqrt(int a) {
-    return sqrt(a);
-}
-void ErrorCheck(int &number){
-    if (number <0 || number > 99999){
-        cout << "Calculation Error, resetting..." << endl;
-        number=0;
-    }
+
+double CalcSLG(int H, int b, int c, int HR, int AB){
+
+    return static_cast <double>  (H + b +  2*c + 3*HR) / AB ;
 }
